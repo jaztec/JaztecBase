@@ -2,6 +2,8 @@
 
 namespace JaztecBase;
 
+use \Zend\ModuleManager\ModuleManager;
+
 class Module
 {
 

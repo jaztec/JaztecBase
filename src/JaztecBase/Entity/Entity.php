@@ -23,5 +23,5 @@ abstract class Entity implements EntityInterface
     /**
      * [php-doc]
      */
-    public function serialize();
+    abstract public function serialize();
 }
