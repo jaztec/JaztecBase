@@ -12,7 +12,7 @@ use JaztecBase\Entity\Entity;
  * 
  * Provides common doctrine methods
  */
-abstract class AbstractDoctrineMapper extends AbstractMapper
+abstract class BaseDoctrineMapper extends AbstractMapper
 {
     const TYPE_SERIALIZEDARRAY = 0x1;
     const TYPE_ENTITYARRAY = 0x2;
