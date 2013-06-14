@@ -9,19 +9,19 @@ use JaztecBase\Entity\Entity;
 
 /**
  * Doctrine Mapper
- * 
+ *
  * Provides common doctrine methods
  */
 abstract class BaseDoctrineMapper extends AbstractMapper
 {
     const TYPE_SERIALIZEDARRAY = 0x1;
     const TYPE_ENTITYARRAY = 0x2;
-    
+
     /**
      * @var EntityManager
      */
     protected $entityManager;
-    
+
     /**
      * @var string
      */
@@ -58,10 +58,10 @@ abstract class BaseDoctrineMapper extends AbstractMapper
     {
         return $this->entityManager->getRepository($this->entityName);
     }
-    
+
     /**
-     * @param array|\Doctrine\Common\Persistence\ObjectRepository $repo
-     * @param int $type
+     * @param  array|\Doctrine\Common\Persistence\ObjectRepository $repo
+     * @param  int                                                 $type
      * @return array
      */
     protected function processResult($repo, $type)
@@ -71,13 +71,13 @@ abstract class BaseDoctrineMapper extends AbstractMapper
             !is_array($repo)) {
             throw new Exception(__CLASS__ . ' expects an array or a \Doctrine\Common\Persistence\ObjectRepository. ' . class_name($repo) . ' given.');
         }
-        switch($type){
+        switch ($type) {
             case AbstractDoctrineMapper::TYPE_SERIALIZEDARRAY:
                 $result = array();
-                foreach($repo as $obj) {
+                foreach ($repo as $obj) {
                     /* @var $obj \JaztecBase\Entity\EntityInterface */
                     if($obj instanceof \JaztecBase\Entity\EntityInterface)
-                        $result[] = $obj->serialize();
+                        $result[] = $obj->toArray();
                     elseif (is_array($obj))
                         $result[] = $obj;
                 }
@@ -88,15 +88,17 @@ abstract class BaseDoctrineMapper extends AbstractMapper
                 $result = $repo;
                 break;
         }
+
         return $result;
     }
 
     /**
      * Persists and saves an entity to the database.
-     * 
+     *
      * @param \JaztecBase\Entity\Entity $entity
      */
-    public function save(Entity $entity) {
+    public function save(Entity $entity)
+    {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
