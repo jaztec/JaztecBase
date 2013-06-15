@@ -8,8 +8,7 @@ interface EntityInterface
      * Updates the entity from an array, matching the key's to an internal
      * setter
      *
-     * @param  array                              $array
-     * @return \JaztecBase\Entity\EntityInterface
+     * @param  array $array
      */
     public function fromArray(array $array);
 

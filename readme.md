@@ -3,7 +3,7 @@ JaztecBase
 
 Some basic definitions to be used through the rest of the Jaztec Modules
 
-## Dependancies
+## Dependencies
 
 - zendframework/ZF2
 
