@@ -2,6 +2,6 @@
 
 namespace JaztecBase\Mapper;
 
-use JaztecBase\Service\BaseService;
+use JaztecBase\Service\AbstractService;
 
-abstract class AbstractMapper extends BaseService {}
+abstract class AbstractMapper extends AbstractService {}
