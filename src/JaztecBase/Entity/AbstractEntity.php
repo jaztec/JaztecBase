@@ -7,8 +7,7 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * Activate all internal setters with the key-value pairs inside an array.
      *
-     * @param  array                     $array
-     * @return \JaztecBase\Entity\Entity
+     * @param array $array
      */
     public function fromArray(array $array)
     {
@@ -17,8 +16,6 @@ abstract class AbstractEntity implements EntityInterface
             if (method_exists($this, $method))
                 $this->$method($value);
         }
-
-        return $this;
     }
 
     /**

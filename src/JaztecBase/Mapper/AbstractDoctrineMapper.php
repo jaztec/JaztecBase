@@ -5,14 +5,14 @@ namespace JaztecBase\Mapper;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
 
-use JaztecBase\Entity\Entity;
+use JaztecBase\Entity\AbstractEntity as Entity;
 
 /**
  * Doctrine Mapper
  *
  * Provides common doctrine methods
  */
-abstract class BaseDoctrineMapper extends AbstractMapper
+abstract class AbstractDoctrineMapper extends AbstractMapper
 {
     const TYPE_SERIALIZEDARRAY = 0x1;
     const TYPE_ENTITYARRAY = 0x2;
@@ -95,7 +95,7 @@ abstract class BaseDoctrineMapper extends AbstractMapper
     /**
      * Persists and saves an entity to the database.
      *
-     * @param \JaztecBase\Entity\Entity $entity
+     * @param \JaztecBase\Entity\AbstractEntity $entity
      */
     public function save(Entity $entity)
     {
