@@ -2,9 +2,11 @@
 
 namespace JaztecBase;
 
-use \Zend\ModuleManager\ModuleManager;
+use Zend\ModuleManager\ModuleManager;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
-class Module
+class Module implements
+    ServiceProviderInterface
 {
 
     public function init(ModuleManager $moduleManager)
@@ -26,4 +28,16 @@ class Module
         );
     }
 
+    public function getServiceConfig()
+    {
+        return array(
+            'initializers' => array(
+                'base_em' => function($instance, $sm) {
+                    if ($instance instanceof Mapper\AbstractDoctrineMapper) {
+                        $instance->setEntityManager($sm->get('doctrine.entitymanager.orm_default'));
+                    }
+                },
+            ),
+        );
+    }
 }

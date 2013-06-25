@@ -15,6 +15,11 @@ abstract class AbstractService implements
     EventManagerAwareInterface
 {
     /**
+     * @var $config array
+     */
+    protected $config;
+
+    /**
      * @var EventManagerInterface
      */
     protected $events;
@@ -115,4 +120,6 @@ abstract class AbstractService implements
     {
 
     }
+
 }
+
