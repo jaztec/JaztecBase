@@ -67,7 +67,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
     protected function processResult($repo, $type)
     {
         // Testing on input parameters
-        if (!$repo instanceof Doctrine\Common\Persistence\ObjectRepository &&
+        if (!$repo instanceof \Doctrine\Common\Persistence\ObjectRepository &&
             !is_array($repo)) {
             throw new Exception(__CLASS__ . ' expects an array or a \Doctrine\Common\Persistence\ObjectRepository. ' . class_name($repo) . ' given.');
         }
