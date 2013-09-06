@@ -105,7 +105,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
 
     /**
      * Removes an entity from the database.
-     * 
+     *
      * @param \JaztecBase\Entity\AbstractEntity $entity
      */
     public function remove(Entity $entity)
