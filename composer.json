@@ -1,0 +1,21 @@
+{
+    "name": "jaztec/JaztecBase",
+    "description": "Base ZF2 classes",
+    "type": "library", 
+    "license": "MIT",
+    "keywords": [
+                "jaztec"
+    ],
+    "homepage": "http://www.jaztec.nl/",
+    "authors": [
+		{
+            "name": "Jasper van Herpt",
+            "email": "jasper@jaspervanherpt.com",
+            "homepage": "http://www.jaspervanherpt.com"
+		}
+	],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    }
+}
