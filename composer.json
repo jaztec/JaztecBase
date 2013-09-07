@@ -1,5 +1,5 @@
 {
-    "name": "jaztec/JaztecBase",
+    "name": "jaztec/jaztec-base",
     "description": "Base ZF2 classes",
     "type": "library", 
     "license": "MIT",
