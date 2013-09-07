@@ -9,11 +9,6 @@ class Module implements
     ServiceProviderInterface
 {
 
-    public function init(ModuleManager $moduleManager)
-    {
-        $events = $moduleManager->getEventManager()->getSharedManager();
-    }
-
     /**
      * {@inheritDoc}
      */
