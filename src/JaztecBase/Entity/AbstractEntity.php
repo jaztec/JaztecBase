@@ -5,9 +5,7 @@ namespace JaztecBase\Entity;
 abstract class AbstractEntity implements EntityInterface
 {
     /**
-     * Activate all internal setters with the key-value pairs inside an array.
-     *
-     * @param array $array
+     * [php-doc]
      */
     public function fromArray(array $array)
     {

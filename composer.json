@@ -4,15 +4,15 @@
     "type": "library", 
     "license": "MIT",
     "keywords": [
-                "jaztec"
+        "jaztec"
     ],
     "homepage": "http://www.jaztec.nl/",
     "authors": [
-		{
-            "name": "Jasper van Herpt",
-            "email": "jasper@jaspervanherpt.com",
-            "homepage": "http://www.jaspervanherpt.com"
-		}
+            {
+                "name": "Jasper van Herpt",
+                "email": "jasper@jaspervanherpt.com",
+                "homepage": "http://www.jaspervanherpt.com"
+            }
 	],
     "require": {
         "php": ">=5.3.3",
