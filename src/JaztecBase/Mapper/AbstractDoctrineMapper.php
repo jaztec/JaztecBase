@@ -69,22 +69,26 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
         // Testing on input parameters
         if (!$repo instanceof \Doctrine\Common\Persistence\ObjectRepository &&
             !is_array($repo)) {
-            throw new Exception(__CLASS__ . ' expects an array or a \Doctrine\Common\Persistence\ObjectRepository. ' . class_name($repo) . ' given.');
+            throw new Exception(__CLASS__ . ' expects an array or a 
+                \Doctrine\Common\Persistence\ObjectRepository. ' . 
+                class_name($repo) . ' given.');
         }
         switch ($type) {
             case AbstractDoctrineMapper::TYPE_SERIALIZEDARRAY:
                 $result = array();
                 foreach ($repo as $obj) {
                     /* @var $obj \JaztecBase\Entity\EntityInterface */
-                    if($obj instanceof \JaztecBase\Entity\EntityInterface)
+                    if($obj instanceof \JaztecBase\Entity\EntityInterface) {
                         $result[] = $obj->toArray();
-                    elseif (is_array($obj))
+                    } elseif (is_array($obj)) {
                         $result[] = $obj;
+                    }
                 }
                 break;
             case AbstractDoctrineMapper::TYPE_ENTITYARRAY:
-                if(!is_array($repo))
+                if(!is_array($repo)) {
                     $repo = array($repo);
+                }
                 $result = $repo;
                 break;
         }
