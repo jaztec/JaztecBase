@@ -32,7 +32,7 @@ class Module implements
     {
         return array(
             'initializers' => array(
-                'base_em' => function($instance, $sm) {
+                'base_em' => function ($instance, $sm) {
                     if ($instance instanceof Mapper\AbstractDoctrineMapper) {
                         $instance->setEntityManager($sm->get('doctrine.entitymanager.orm_default'));
                     }
