@@ -14,8 +14,8 @@ use JaztecBase\Entity\AbstractEntity as Entity;
  */
 abstract class AbstractDoctrineMapper extends AbstractMapper
 {
-    const TYPE_SERIALIZEDARRAY = 0x1;
-    const TYPE_ENTITYARRAY = 0x2;
+    const TYPE_SERIALIZEDARRAY  = 0x1;
+    const TYPE_ENTITYARRAY      = 0x2;
 
     /**
      * @var EntityManager
