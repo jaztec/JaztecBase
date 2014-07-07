@@ -47,4 +47,23 @@ interface NodeInterface
      * The node which is currently the active parent.
      */    
     public function getParentNode();
+
+    /**
+     * Sets the parent node of this node.
+     * @param \JaztecBase\AStar\Node\NodeInterface $parentNode
+     */
+    public function setParentNode(NodeInterface $parentNode);
+
+    /**
+     * Get the adjacent nodes from a node.
+     * @return \Doctrine\Common\Collections\ArrayCollection The adjacent nodes.
+     */
+    public function getAdjacentNodes();
+
+    /**
+     * Function returning wether or not this node has to be included into the 
+     * search.
+     * @return bool
+     */
+    public function isValidNode();
 }

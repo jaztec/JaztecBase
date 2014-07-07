@@ -6,19 +6,13 @@ interface EdgeInterface
 {
     /**
      * Get the id of this edge
-     * @return string The id of this node edge.
+     * @return mixed The id of this node edge.
      */
     public function getId();
 
     /**
-     * Get the nodes which are connected.
+     * Get the nodes which are listed inside this edge.
      * @return \JaztecBase\AStar\Node\EdgeInterface[] The nodes.
      */
     public function getNodes();
-
-    /**
-     * @return \JaztecBase\AStar\Node\NodeInterface 
-     * The node which is currently the active parent.
-     */
-    public function getParentNode();
 }

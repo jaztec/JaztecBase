@@ -2,11 +2,10 @@
 
 namespace JaztecBase\AStar;
 
-use JaztecBase\Service\AbstractService;
 use JaztecBase\AStar\Node\NodeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class AStar extends AbstractService implements
+class AStar implements
     AStarInterface
 {
     /**
@@ -154,22 +153,26 @@ class AStar extends AbstractService implements
         $bestNode = null;
     }
 
-    /**
-     * Get the adjacent nodes from a node.
-     * @param \JaztecBase\AStar\Node\NodeInterface $node
-     * @return \Doctrine\Common\Collections\ArrayCollection The adjacent nodes.
-     */
-    protected function getAdjacentNodes(Node\NodeInterface $node)
-    {
-        $nodes = new ArrayCollection;
-        foreach ($node->getEdges() as $edge) {
-            /* @var $edge \JaztecBase\AStar\Node\EdgeInterface */
-            foreach ($edge->getNodes() as $adjacentNode) {
-                $nodes->add($adjacentNode);
-            }
-        }
-        return $nodes;
-    }
+//    @todo implement this into the basic node.
+//    /**
+//     * Get the adjacent nodes from a node.
+//     * @param \JaztecBase\AStar\Node\NodeInterface $node
+//     * @return \Doctrine\Common\Collections\ArrayCollection The adjacent nodes.
+//     */
+//    protected function getAdjacentNodes(Node\NodeInterface $node)
+//    {
+//        $nodes = new ArrayCollection;
+//        foreach ($node->getEdges() as $edge) {
+//            /* @var $edge \JaztecBase\AStar\Node\EdgeInterface */
+//            foreach ($edge->getNodes() as $adjacentNode) {
+//                /* @var $adjacentNode \JaztecBase\AStar\Node\NodeInterface */
+//                // Set the current node ad the adjacents parent.
+//                $adjacentNode->setParentNode($node);
+//                $nodes->add($adjacentNode);
+//            }
+//        }
+//        return $nodes;
+//    }
 
     /**
      * Does the actual working towards the end node.
