@@ -56,7 +56,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
      */
     public function getRepository()
     {
-        return $this->entityManager->getRepository($this->entityName);
+        return $this->getEntityManager()->getRepository($this->entityName);
     }
 
     /**
