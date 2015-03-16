@@ -88,7 +88,7 @@ abstract class AbstractService implements
      */
     public function setEventManager(EventManagerInterface $events)
     {
-        $events->setIdentifiers(array(__CLASS__, get_called_class()));
+        $events->setIdentifiers([__CLASS__, get_called_class()]);
         $this->events = $events;
         $this->attachDefaultListeners();
 

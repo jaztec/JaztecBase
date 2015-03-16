@@ -14,25 +14,25 @@ class Module implements
      */
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     public function getServiceConfig()
     {
-        return array(
-            'initializers' => array(
+        return [
+            'initializers' => [
                 'base_em' => function ($instance, $sm) {
                     if ($instance instanceof Mapper\AbstractDoctrineMapper) {
                         $instance->setEntityManager($sm->get('doctrine.entitymanager.orm_default'));
                     }
                 },
-            ),
-        );
+            ],
+        ];
     }
 }

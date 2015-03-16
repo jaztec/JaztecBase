@@ -77,7 +77,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
         }
         switch ($type) {
             case AbstractDoctrineMapper::TYPE_SERIALIZEDARRAY:
-                $result = array();
+                $result = [];
                 foreach ($repo as $obj) {
                     /* @var $obj \JaztecBase\Entity\EntityInterface */
                     if ($obj instanceof \JaztecBase\Entity\EntityInterface) {
@@ -89,7 +89,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
                 break;
             case AbstractDoctrineMapper::TYPE_ENTITYARRAY:
                 if (!is_array($repo)) {
-                    $repo = array($repo);
+                    $repo = [$repo];
                 }
                 $result = $repo;
                 break;

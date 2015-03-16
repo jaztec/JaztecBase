@@ -5,7 +5,7 @@ namespace JaztecBase\Entity;
 abstract class AbstractEntity implements EntityInterface
 {
     /**
-     * [php-doc]
+     * @inheritdoc
      */
     public function fromArray(array $array)
     {
@@ -18,7 +18,7 @@ abstract class AbstractEntity implements EntityInterface
     }
 
     /**
-     * [php-doc]
+     * @inheritdoc
      */
     abstract public function toArray();
 }

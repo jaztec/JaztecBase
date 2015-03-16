@@ -4,6 +4,14 @@ namespace JaztecBase\Entity;
 
 interface EntityInterface
 {
+    
+    /**
+     * Get the database identifier
+     * 
+     * @return int
+     */
+    public function getId();
+    
     /**
      * Updates the entity from an array, matching the key's to an internal
      * setter
