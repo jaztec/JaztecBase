@@ -4,6 +4,7 @@ namespace JaztecBase\Entity;
 
 abstract class AbstractEntity implements EntityInterface
 {
+    
     /**
      * @inheritdoc
      */

@@ -2,17 +2,17 @@
 
 namespace JaztecBase\Mapper;
 
-use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
-
-use JaztecBase\Entity\AbstractEntity as Entity;
+use JaztecBase\ORM\EntityManagerAwareInterface;
+use JaztecBase\Entity\AbstractEntity;
 
 /**
  * Doctrine Mapper
  *
  * Provides common doctrine methods
  */
-abstract class AbstractDoctrineMapper extends AbstractMapper
+abstract class AbstractDoctrineMapper extends AbstractMapper implements
+    EntityManagerAwareInterface
 {
     const TYPE_SERIALIZEDARRAY  = 0x1;
     const TYPE_ENTITYARRAY      = 0x2;
@@ -103,10 +103,12 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
      *
      * @param \JaztecBase\Entity\AbstractEntity $entity
      */
-    public function save(Entity $entity)
+    public function save(AbstractEntity $entity)
     {
-        $this->getEntityManager()->persist($entity);
-        $this->getEntityManager()->flush();
+        if (empty($entity->getId())) {
+            $this->getEntityManager()->persist($entity);
+        }
+        $this->getEntityManager()->flush($entity);
     }
 
     /**
@@ -114,7 +116,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper
      *
      * @param \JaztecBase\Entity\AbstractEntity $entity
      */
-    public function remove(Entity $entity)
+    public function remove(AbstractEntity $entity)
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();

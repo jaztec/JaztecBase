@@ -2,11 +2,13 @@
 
 namespace JaztecBase;
 
-use Zend\ModuleManager\ModuleManager;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use JaztecBase\ORM\EntityManagerAwareInterface;
 
-class Module implements
-    ServiceProviderInterface
+class Module implements 
+    ServiceProviderInterface,
+    AutoloaderProviderInterface
 {
 
     /**
@@ -27,8 +29,8 @@ class Module implements
     {
         return [
             'initializers' => [
-                'base_em' => function ($instance, $sm) {
-                    if ($instance instanceof Mapper\AbstractDoctrineMapper) {
+                'jaztecEntityManager' => function ($instance, $sm) {
+                    if ($instance instanceof EntityManagerAwareInterface) {
                         $instance->setEntityManager($sm->get('doctrine.entitymanager.orm_default'));
                     }
                 },
