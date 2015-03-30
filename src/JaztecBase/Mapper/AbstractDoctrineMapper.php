@@ -70,7 +70,7 @@ abstract class AbstractDoctrineMapper extends AbstractMapper implements
         if (!$repo instanceof \Doctrine\Common\Persistence\ObjectRepository &&
             !is_array($repo)) {
             throw new Exception(
-                __CLASS__ . ' expects an array or a 
+                __CLASS__ . ' expects an array or a
                 \Doctrine\Common\Persistence\ObjectRepository. ' .
                 class_name($repo) . ' given.'
             );
@@ -99,9 +99,22 @@ abstract class AbstractDoctrineMapper extends AbstractMapper implements
     }
 
     /**
+     * Will return an array with all the entities found.
+     *
+     * @return AbstractEntity[] An array with serialzed entities.
+     */
+    public function findAll()
+    {
+        return $this->processResult(
+            $this->getRepository()->findAll(),
+            self::TYPE_SERIALIZEDARRAY
+        );
+    }
+
+    /**
      * Persists and saves an entity to the database.
      *
-     * @param \JaztecBase\Entity\AbstractEntity $entity
+     * @param AbstractEntity $entity
      */
     public function save(AbstractEntity $entity)
     {
@@ -114,11 +127,20 @@ abstract class AbstractDoctrineMapper extends AbstractMapper implements
     /**
      * Removes an entity from the database.
      *
-     * @param \JaztecBase\Entity\AbstractEntity $entity
+     * @param AbstractEntity $entity
      */
     public function remove(AbstractEntity $entity)
     {
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @param int $id
+     * @return AbstractEntity
+     */
+    public function find($id)
+    {
+        return $this->getRepository()->find($id);
     }
 }
