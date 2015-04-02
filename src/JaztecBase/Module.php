@@ -4,11 +4,13 @@ namespace JaztecBase;
 
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use JaztecBase\ORM\EntityManagerAwareInterface;
 
-class Module implements 
+class Module implements
     ServiceProviderInterface,
-    AutoloaderProviderInterface
+    AutoloaderProviderInterface,
+    ControllerProviderInterface
 {
 
     /**
@@ -21,6 +23,19 @@ class Module implements
                 'namespaces' => [
                     __NAMESPACE__ => __DIR__,
                 ],
+            ],
+        ];
+    }
+
+    public function getControllerConfig()
+    {
+        return [
+            'initializers' => [
+                'jaztecEntityManager' => function ($instance, $sm) {
+                    if ($instance instanceof EntityManagerAwareInterface) {
+                        $instance->setEntityManager($sm->getServiceLocator()->get('doctrine.entitymanager.orm_default'));
+                    }
+                },
             ],
         ];
     }
